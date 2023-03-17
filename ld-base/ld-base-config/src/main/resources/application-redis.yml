@@ -1,0 +1,5 @@
+spring:
+  redis:
+    host: ${bld.host}
+    port: ${bld.redis-port}
+    password: 

@@ -1,0 +1,7 @@
+spring:
+  application:
+    name: ld-gateway
+
+#默认使用7201端口
+server:
+  port: 7201

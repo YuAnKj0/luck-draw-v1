@@ -1,0 +1,16 @@
+ld:
+  host: 127.0.0.1
+  mysql-port: ENC(SBNLkC+reXX0wZXt8WwbRVMUAxK3uALs)
+  nacos-port: ENC(dlTAi6aUhte99c2/eTl+zCNgPMMx2aib)
+  redis-port: ENC(wXpIC22Mt1F3/mZrNbN3JLZu7SW1bgFd)
+  rocketmq-port:
+  druid_password: 
+    
+nacos: 
+  #dev
+  namespace:
+#database
+DB_HOST: ${bld.host}:${bld.mysql-port}
+DB_NAME: ldb
+DB_USERNAME: root
+DB_PASSWORD: root
