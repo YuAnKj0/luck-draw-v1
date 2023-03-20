@@ -16,25 +16,21 @@
         <java.version>17</java.version>
     </properties>
     <dependencies>
+
         <dependency>
-            <groupId>org.springframework.boot</groupId>
-            <artifactId>spring-boot-starter</artifactId>
+            <groupId>com.yuan.lucky</groupId>
+            <artifactId>lucky-client</artifactId>
         </dependency>
 
         <dependency>
-            <groupId>org.springframework.boot</groupId>
-            <artifactId>spring-boot-starter-test</artifactId>
-            <scope>test</scope>
+            <groupId>com.yuan.lucky</groupId>
+            <artifactId>lucky-infrastructure</artifactId>
+        </dependency>
+
+        <dependency>
+            <groupId>com.alibaba.cola</groupId>
+            <artifactId>cola-component-catchlog-starter</artifactId>
         </dependency>
     </dependencies>
-
-    <build>
-        <plugins>
-            <plugin>
-                <groupId>org.springframework.boot</groupId>
-                <artifactId>spring-boot-maven-plugin</artifactId>
-            </plugin>
-        </plugins>
-    </build>
 
 </project>

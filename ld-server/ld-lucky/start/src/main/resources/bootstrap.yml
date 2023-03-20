@@ -1,0 +1,7 @@
+spring:
+  application:
+    name: ld-lucky
+
+#默认使用7204端口
+server:
+  port: 7214

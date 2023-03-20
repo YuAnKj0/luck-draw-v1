@@ -1,8 +1,8 @@
 ld:
-  host: 127.0.0.1
-  mysql-port: ENC(SBNLkC+reXX0wZXt8WwbRVMUAxK3uALs)
-  nacos-port: ENC(dlTAi6aUhte99c2/eTl+zCNgPMMx2aib)
-  redis-port: ENC(wXpIC22Mt1F3/mZrNbN3JLZu7SW1bgFd)
+  host: localhost
+  mysql-port: 3306
+  nacos-port: 
+  redis-port: 
   rocketmq-port:
   druid_password: 
     

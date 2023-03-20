@@ -18,24 +18,19 @@
     </properties>
     <dependencies>
         <dependency>
-            <groupId>org.springframework.boot</groupId>
-            <artifactId>spring-boot-starter</artifactId>
+            <groupId>com.yuan.lucky</groupId>
+            <artifactId>lucky-client</artifactId>
         </dependency>
 
+        <!-- COLA components -->
         <dependency>
-            <groupId>org.springframework.boot</groupId>
-            <artifactId>spring-boot-starter-test</artifactId>
-            <scope>test</scope>
+            <groupId>com.alibaba.cola</groupId>
+            <artifactId>cola-component-domain-starter</artifactId>
         </dependency>
+        <dependency>
+            <groupId>com.alibaba.cola</groupId>
+            <artifactId>cola-component-exception</artifactId>
+        </dependency>
+        <!-- COLA components End-->
     </dependencies>
-
-    <build>
-        <plugins>
-            <plugin>
-                <groupId>org.springframework.boot</groupId>
-                <artifactId>spring-boot-maven-plugin</artifactId>
-            </plugin>
-        </plugins>
-    </build>
-
 </project>
