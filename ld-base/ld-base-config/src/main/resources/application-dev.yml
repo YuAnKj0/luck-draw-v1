@@ -14,4 +14,4 @@ nacos:
 DB_HOST: ${ld.host}:${ld.mysql-port}
 DB_NAME: ldb
 DB_USERNAME: root
-DB_PASSWORD: zhangF@3306
+DB_PASSWORD: 
