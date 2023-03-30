@@ -1,15 +1,13 @@
 package com.yuan.base.common.handler;
 
-import cn.hutool.poi.excel.ExcelWriter;
 import com.mysql.cj.jdbc.exceptions.MysqlDataTruncation;
-import com.yuan.config.exception.LDException;
-import com.yuan.config.exception.NoAuthException;
-import com.yuan.config.vo.FailInfo;
+import com.yuan.base.config.exception.LDException;
+import com.yuan.base.config.exception.TokenAuthException;
+import com.yuan.base.config.vo.FailInfo;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.dao.DataIntegrityViolationException;
 import org.springframework.validation.BindException;
 import org.springframework.web.bind.annotation.ExceptionHandler;
-import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestControllerAdvice;
 
 import java.util.Objects;
@@ -45,6 +43,14 @@ public class SysExceptionHandler {
       log.error("Exception info:{}", e.getMessage());
       log.error("Exception info:",e);
       var failInfo= FailInfo.builder().exception(defaultMessage).build();
+      return failInfo;
+   }
+   
+   @ExceptionHandler(value = TokenAuthException.class)
+   public FailInfo TokenAuthException(TokenAuthException e){
+      log.error("Exception information:{}", e.getMessage());
+      log.error("Exception info:",e);
+      var failInfo= FailInfo.builder().exception(e.getMessage()).build();
       return failInfo;
    }
    

@@ -8,18 +8,19 @@
         <version>LD.2022.11.26</version>
         <relativePath/> <!-- lookup parent from repository -->
     </parent>
-
-    <groupId>com.yuan.lucky</groupId>
-    <version>LD.2022.11.26</version>
+    
     <artifactId>lucky-infrastructure</artifactId>
 
-    <properties>
-        <java.version>17</java.version>
-    </properties>
     <dependencies>
         <dependency>
-            <groupId>com.yuan.lucky</groupId>
+            <groupId>com.yuan</groupId>
             <artifactId>lucky-domain</artifactId>
+            <version>LD.2022.11.26</version>
+        </dependency>
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-test</artifactId>
+            <scope>test</scope>
         </dependency>
     </dependencies>
 

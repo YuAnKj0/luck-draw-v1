@@ -10,10 +10,6 @@
     </parent>
     <packaging>jar</packaging>
     <artifactId>ld-base-config</artifactId>
-    
-    <properties>
-        <java.version>17</java.version>
-    </properties>
 
     
 

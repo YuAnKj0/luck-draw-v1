@@ -6,14 +6,9 @@
         <groupId>com.yuan</groupId>
         <artifactId>luck-draw-v1</artifactId>
         <version>LD.2022.11.26</version>
-        <relativePath/> <!-- lookup parent from repository -->
     </parent>
     <packaging>pom</packaging>
     <artifactId>ld-server</artifactId>
-    <version>LD.2022.11.26</version>
-    <properties>
-        <java.version>17</java.version>
-    </properties>
     <modules>
         <module>ld-lucky</module>
         <module>ld-user</module>

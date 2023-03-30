@@ -8,18 +8,13 @@
         <version>LD.2022.11.26</version>
         <relativePath/> <!-- lookup parent from repository -->
     </parent>
-
-    <groupId>com.yuan.lucky</groupId>
-    <version>LD.2022.11.26</version>
     <artifactId>lucky-domain</artifactId>
 
-    <properties>
-        <java.version>17</java.version>
-    </properties>
     <dependencies>
         <dependency>
-            <groupId>com.yuan.lucky</groupId>
+            <groupId>com.yuan</groupId>
             <artifactId>lucky-client</artifactId>
+            <version>LD.2022.11.26</version>
         </dependency>
 
         <!-- COLA components -->
@@ -30,6 +25,16 @@
         <dependency>
             <groupId>com.alibaba.cola</groupId>
             <artifactId>cola-component-exception</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-test</artifactId>
+            <scope>test</scope>
+        </dependency>
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-test</artifactId>
+            <scope>test</scope>
         </dependency>
         <!-- COLA components End-->
     </dependencies>

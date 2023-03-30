@@ -6,13 +6,9 @@
         <groupId>com.yuan</groupId>
         <artifactId>luck-draw-v1</artifactId>
         <version>LD.2022.11.26</version>
-        <relativePath/> <!-- lookup parent from repository -->
     </parent>
-    <groupId>com.yuan</groupId>
     <artifactId>ld-base</artifactId>
-    <version>LD.2022.11.26</version>
-    <name>ld-base</name>
-    <description>ld-base</description>
+    
     <packaging>pom</packaging>
     
     <modules>

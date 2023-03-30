@@ -2,7 +2,7 @@
 spring:
   cloud:
     nacos:
-      server-addr: ${bld.host}:${bld.nacos-port}
+      server-addr: ${ld.host}:${ld.nacos-port}
       discovery:
         username: nacos
         password: nacos

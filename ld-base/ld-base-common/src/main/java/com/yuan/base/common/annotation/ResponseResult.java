@@ -10,11 +10,11 @@ import java.lang.annotation.*;
  * @apiNote
  */
 
-@Retention(RetentionPolicy.RUNTIME)  //作用时间
-@Target({ElementType.TYPE,ElementType.METHOD}) //方法和类
+@Retention(RetentionPolicy.RUNTIME)
+@Target({ElementType.TYPE, ElementType.METHOD})
 @Documented
-@RestController
+@RestController // 组合
 public @interface ResponseResult {
-    boolean ingore() default false;
-   
+    // 是否忽略
+    boolean ignore() default false;
 }

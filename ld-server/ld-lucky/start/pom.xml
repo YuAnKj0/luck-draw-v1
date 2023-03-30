@@ -6,7 +6,6 @@
 		<groupId>com.yuan</groupId>
 		<artifactId>ld-lucky</artifactId>
 		<version>LD.2022.11.26</version>
-		<relativePath/> <!-- lookup parent from repository -->
 	</parent>
 	<packaging>jar</packaging>
 
@@ -14,24 +13,29 @@
 	
 	<dependencies>
 	<dependency>
-		<groupId>com.yuan.lucky</groupId>
+		<groupId>com.yuan</groupId>
 		<artifactId>lucky-adapter</artifactId>
+		<version>LD.2022.11.26</version>
 	</dependency>
 	<dependency>
-		<groupId>com.yuan.lucky</groupId>
+		<groupId>com.yuan</groupId>
 		<artifactId>lucky-app</artifactId>
+		<version>LD.2022.11.26</version>
 	</dependency>
 	<dependency>
-		<groupId>com.yuan.lucky</groupId>
+		<groupId>com.yuan</groupId>
 		<artifactId>lucky-client</artifactId>
+		<version>LD.2022.11.26</version>
 	</dependency>
 	<dependency>
-		<groupId>com.yuan.lucky</groupId>
+		<groupId>com.yuan</groupId>
 		<artifactId>lucky-domain</artifactId>
+		<version>LD.2022.11.26</version>
 	</dependency>
 	<dependency>
-		<groupId>com.yuan.lucky</groupId>
+		<groupId>com.yuan</groupId>
 		<artifactId>lucky-infrastructure</artifactId>
+		<version>LD.2022.11.26</version>
 	</dependency>
 
 
@@ -51,7 +55,7 @@
 				<version>2.5.3</version>
 				<configuration>
 					<!-- main方法所在类。 -->
-					<mainClass>com.yuan.start.StartApplication</mainClass>
+					<mainClass>com.yuan.luck.start.StartApplication</mainClass>
 				</configuration>
 				<executions>
 					<execution>

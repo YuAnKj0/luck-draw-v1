@@ -2,9 +2,9 @@
 <!DOCTYPE mapper
         PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="com.yuan.user.mapper.RecordMapper">
+<mapper namespace="com.yuan.luck.user.mapper.RecordMapper">
 
-    <resultMap id="BaseResultMap" type="com.yuan.user.po.Record">
+    <resultMap id="BaseResultMap" type="com.yuan.luck.user.po.Record">
             <id property="id" column="id" jdbcType="BIGINT"/>
             <result property="userId" column="user_id" jdbcType="BIGINT"/>
             <result property="activityId" column="activity_id" jdbcType="BIGINT"/>

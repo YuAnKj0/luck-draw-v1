@@ -10,16 +10,16 @@
     </parent>
     <packaging>jar</packaging>
     <artifactId>ld-gateway</artifactId>
-    <description>ld-gateway</description>
-    <version>LD.2022.11.26</version>
-    <properties>
-        <java.version>17</java.version>
-    </properties>
+  
     <dependencies>
         <dependency>
+            <groupId>org.springframework.cloud</groupId>
+            <artifactId>spring-cloud-starter-gateway</artifactId>
+        </dependency>
+        <dependency>
             <groupId>com.yuan</groupId>
-            <artifactId>ld-pom</artifactId>
-            <version>LD.2022.11.26</version>
+            <artifactId>ld-base-config</artifactId>
+            <version>${project.version}</version>
             <exclusions>
                 <exclusion>
                     <groupId>org.springframework.boot</groupId>
@@ -38,15 +38,6 @@
                     <artifactId>druid</artifactId>
                 </exclusion>
             </exclusions>
-        </dependency>
-        <dependency>
-            <groupId>org.springframework.cloud</groupId>
-            <artifactId>spring-cloud-starter-gateway</artifactId>
-        </dependency>
-        <dependency>
-            <groupId>com.yuan</groupId>
-            <artifactId>ld-base-config</artifactId>
-            <version>${project.version}</version>
         </dependency>
         
       

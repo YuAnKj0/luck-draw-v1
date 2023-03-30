@@ -1,7 +1,7 @@
 spring:
   application:
-    name: ld-lucky
+    name: ld-user
 
-#默认使用7204端口
+#默认使用7214端口
 server:
   port: 7216

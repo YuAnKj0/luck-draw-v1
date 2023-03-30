@@ -2,7 +2,7 @@
 spring.datasource:
   type: com.alibaba.druid.pool.DruidDataSource
   driverClassName: com.mysql.cj.jdbc.Driver
-  url: jdbc:mysql://${DB_HOST}/${DB_NAME}?useUnicode=true&useSSL=false&characterEncoding=utf8&allowMultiQueries=true&serverTimezone=Asia/Shanghai
+  url: jdbc:mysql://${DB_HOST}}/${DB_NAME}?useUnicode=true&useSSL=false&characterEncoding=utf8&allowMultiQueries=true&serverTimezone=Asia/Shanghai
   username: ${DB_USERNAME}
   password: ${DB_PASSWORD}
   #   数据源其他配置
@@ -35,6 +35,6 @@ spring.datasource:
 
 mybatis-plus:
   map-underscore-to-camel-case: true
-  type-enums-package: cn.j3code.bldbase.enums,cn.j3code.botqq.enums,cn.j3code.lucky.enums
+  type-enums-package: com.yuan.base.enums,com.yuan.botqq.enums,com.yuan.luck.enums
 
 mybatis-plus.configuration.log-impl: org.apache.ibatis.logging.stdout.StdOutImpl

@@ -1,6 +1,6 @@
 package com.yuan.luckdomain.user;
 
-import com.yuan.config.exception.LDException;
+import com.yuan.base.config.exception.LDException;
 import lombok.Getter;
 
 import java.util.Objects;

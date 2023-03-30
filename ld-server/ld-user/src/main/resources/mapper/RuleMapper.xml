@@ -2,9 +2,9 @@
 <!DOCTYPE mapper
         PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="com.yuan.user.mapper.RuleMapper">
+<mapper namespace="com.yuan.luck.user.mapper.RuleMapper">
 
-    <resultMap id="BaseResultMap" type="com.yuan.user.po.Rule">
+    <resultMap id="BaseResultMap" type="com.yuan.luck.user.po.Rule">
             <id property="id" column="id" jdbcType="BIGINT"/>
             <result property="ruleName" column="rule_name" jdbcType="VARCHAR"/>
             <result property="maxJoinNumber" column="max_join_number" jdbcType="INTEGER"/>

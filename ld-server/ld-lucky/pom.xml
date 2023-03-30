@@ -6,13 +6,10 @@
         <groupId>com.yuan</groupId>
         <artifactId>ld-server</artifactId>
         <version>LD.2022.11.26</version>
-        <relativePath/> <!-- lookup parent from repository -->
     </parent>
     <packaging>pom</packaging>
     <artifactId>ld-lucky</artifactId>
-    <properties>
-        <java.version>17</java.version>
-    </properties>
+
     <modules>
         <module>lucky-adapter</module>
         <module>lucky-app</module>

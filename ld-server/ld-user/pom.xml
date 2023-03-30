@@ -19,7 +19,7 @@
 				<version>2.5.3</version>
 				<configuration>
 					<!-- main方法所在类。 -->
-					<mainClass>com.yuan.user.LdUserApplication</mainClass>
+					<mainClass>com.yuan.luckadapter.user.LdUserApplication</mainClass>
 				</configuration>
 				<executions>
 					<execution>

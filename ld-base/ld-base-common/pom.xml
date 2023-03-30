@@ -15,11 +15,6 @@
 	<dependencies>
 		<dependency>
 			<groupId>com.yuan</groupId>
-			<artifactId>ld-pom</artifactId>
-			<version>${project.version}</version>
-		</dependency>
-		<dependency>
-			<groupId>com.yuan</groupId>
 			<artifactId>ld-base-config</artifactId>
 			<version>${project.version}</version>
 		</dependency>

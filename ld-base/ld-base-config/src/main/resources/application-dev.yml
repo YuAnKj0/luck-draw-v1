@@ -1,16 +1,17 @@
 ld:
-  host: localhost
+  host: 39.103.154.159
   mysql-port: 3306
-  nacos-port: 
-  redis-port: 
+  nacos-port: 8848
+  redis-port: 6379
   rocketmq-port:
   druid_password: 
     
 nacos: 
   #dev
-  namespace:
+  namespace: bf526873-2af9-498a-9d66-7199b529b45a
+
 #database
-DB_HOST: ${bld.host}:${bld.mysql-port}
+DB_HOST: ${ld.host}:${ld.mysql-port}
 DB_NAME: ldb
 DB_USERNAME: root
-DB_PASSWORD: root
+DB_PASSWORD: zhangF@3306

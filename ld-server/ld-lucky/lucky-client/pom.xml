@@ -8,8 +8,7 @@
         <version>LD.2022.11.26</version>
     </parent>
     <packaging>jar</packaging>
-
-    <groupId>com.yuan.lucky</groupId>
+    
     <artifactId>lucky-client</artifactId>
     
     <dependencies>
