@@ -31,10 +31,10 @@ spring:
 
 
 # 忽略 url 拦截
-ld.global-filter:
+ld.jwt.token.filter:
   ignoreUrlSet:
     - /user/login
     - /user/register
     - /ld-druid/
     - /test
-  authorization: Authorization
+  authorization: authorization
