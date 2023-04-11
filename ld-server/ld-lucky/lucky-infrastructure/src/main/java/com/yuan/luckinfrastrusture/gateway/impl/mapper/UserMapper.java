@@ -24,7 +24,7 @@ public interface UserMapper extends BaseMapper<UserDB> {
      */
     UserDB findByUserName(@Param("id")Long id,@Param("name") String userName);
     
-    IPage<UserDB> findByParam(Page<UserEntity> userEntityPage, UserListByParamQuery query);
+    IPage<UserDB> findByParam(@Param("userEntityPage") Page<UserEntity> userEntityPage, @Param("query") UserListByParamQuery query);
 }
 
 

@@ -28,7 +28,7 @@
                 and a.id=#{query.id}
             </if>
             <if test="query.prizeName!=null and query.prizeName!=''">
-                and a.prizeName like concat('%',#{query.prizeName},'%')
+                and a.prize_name like concat('%',#{query.prizeName},'%')
             </if>
             <if test="query.type!=null">
                 and a.type=#{query.type}

@@ -38,7 +38,7 @@ public class AdminPrizeController {
       return iPrizeService.page(query);
    }
    
-   @GetMapping("/one")
+   @GetMapping("/{id}")
    public PrizeVO one(@PathVariable(name = "id") Long id){
       return iPrizeService.one(id);
    }

@@ -20,4 +20,15 @@
         max_wining_number,create_time,creator,
         update_time,updater
     </sql>
+    <select id="page" resultType="com.yuan.luckinfrastrusture.gateway.impl.dataobject.RuleDB">
+        select * from ld_rule a
+        <where>
+            <if test="query.id!=null">
+                and a.id = #{query.id}
+            </if>
+            <if test="query.ruleName!=null and query.ruleName!=''">
+                and a.rule_name like concat('%',query.rule_name,'%')
+            </if>
+        </where> 
+    </select>
 </mapper>
