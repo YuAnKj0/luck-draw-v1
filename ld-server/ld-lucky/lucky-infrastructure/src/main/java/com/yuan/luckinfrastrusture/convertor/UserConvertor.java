@@ -1,10 +1,9 @@
 package com.yuan.luckinfrastrusture.convertor;
 import com.yuan.luckdomain.user.UserName;
 import com.yuan.luckdomain.user.PassWord;
-import java.time.LocalDateTime;
+
 import java.util.Objects;
 
-import com.yuan.luckdomain.gateway.UserGateway;
 import com.yuan.luckdomain.user.UserEntity;
 import com.yuan.luckinfrastrusture.gateway.impl.dataobject.UserDB;
 

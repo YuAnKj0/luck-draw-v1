@@ -1,0 +1,14 @@
+${AnsiColor.BRIGHT_RED}
+                                       __     __                   _  ___  ___  
+                                       \ \   / /       /\         | |/ (_)/ _ \ 
+                                        \ \_/ /   _   /  \   _ __ | ' / _| | | |
+                                         \   / | | | / /\ \ | '_ \|  < | | | | |
+                                          | || |_| |/ ____ \| | | | . \| | |_| |
+                                          |_| \__,_/_/    \_\_| |_|_|\_\ |\___/ 
+                                                                      _/ |      
+                                                                     |__/       
+
+${AnsiColor.BRIGHT_CYAN}
+欢迎使用本项目
+${AnsiColor.YELLOW}
+SpringBoot版本：${spring-boot.version}

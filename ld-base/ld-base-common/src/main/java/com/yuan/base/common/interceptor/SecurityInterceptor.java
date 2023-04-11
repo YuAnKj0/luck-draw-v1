@@ -3,6 +3,8 @@ package com.yuan.base.common.interceptor;
 import com.yuan.base.config.utils.SecurityUtil;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
+import lombok.extern.slf4j.Slf4j;
+import org.springframework.stereotype.Component;
 import org.springframework.web.servlet.HandlerInterceptor;
 import org.springframework.web.servlet.ModelAndView;
 
@@ -11,12 +13,15 @@ import java.util.HashMap;
 import java.util.Map;
 import java.util.Objects;
 
+
+@Slf4j
+@Component
 /**
  * @author Ykj
  * @date 2023/3/30/15:25
  * @apiNote
  */
-public class SecurityInterceptor implements HandlerInterceptor {
+public class  SecurityInterceptor implements HandlerInterceptor {
    @Override
    public boolean preHandle(HttpServletRequest request, HttpServletResponse response, Object handler) throws Exception {
       Map<String, Object> userMap = new HashMap<>();
