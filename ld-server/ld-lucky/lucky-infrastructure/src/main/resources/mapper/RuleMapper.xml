@@ -21,7 +21,7 @@
         update_time,updater
     </sql>
     <select id="page" resultType="com.yuan.luckinfrastrusture.gateway.impl.dataobject.RuleDB">
-        select * from ld_rule a
+        select * from bld_rule a
         <where>
             <if test="query.id!=null">
                 and a.id = #{query.id}

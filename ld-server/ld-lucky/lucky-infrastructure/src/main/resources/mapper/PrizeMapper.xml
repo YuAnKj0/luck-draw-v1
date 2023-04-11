@@ -22,7 +22,7 @@
         creator,update_time,updater
     </sql>
     <select id="page" resultType="com.yuan.luckinfrastrusture.gateway.impl.dataobject.PrizeDB">
-        select * from ld_prize
+        select * from bld_prize a
         <where>
             <if test="query.id!=null">
                 and a.id=#{query.id}

@@ -12,7 +12,7 @@
         <result property="phone" column="phone" jdbcType="VARCHAR"/>
         <result property="createTime" column="create_time" jdbcType="TIMESTAMP"/>
         <result property="creator" column="creator" jdbcType="VARCHAR"/>
-        <result property="updateTime" column="update_update" jdbcType="TIMESTAMP"/>
+        <result property="updateTime" column="update_time" jdbcType="TIMESTAMP"/>
         <result property="updater" column="updater" jdbcType="VARCHAR"/>
     </resultMap>
 
@@ -22,7 +22,7 @@
         creator,update_update,updater
     </sql>
     <select id="findByUserName" resultMap="BaseResultMap">
-        select * from ld_user a
+        select * from bld_user a
         <where>
             <if test="id!=null">
             and a.id=#{id}</if>
@@ -31,7 +31,7 @@
         </where>
     </select>
     <select id="findByParam" resultType="com.yuan.luckinfrastrusture.gateway.impl.dataobject.UserDB">
-        select * from ld_user a
+        select * from bld_user a
         <where>
         <if test="query.id != null">
             and a.id = #{query.id}

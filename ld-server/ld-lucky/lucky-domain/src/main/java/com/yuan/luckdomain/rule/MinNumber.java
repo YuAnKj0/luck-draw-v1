@@ -18,7 +18,7 @@ public class MinNumber {
    
    public MinNumber(Integer number){
       if (number <1){
-         throw new LDException("规则次数必须大于1");
+         throw new LDException("数量必须大于1");
       }
       this.number = number;
    }

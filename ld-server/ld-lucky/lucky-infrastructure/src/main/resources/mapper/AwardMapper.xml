@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.yuan.luckinfrastrusture.gateway.impl.mapper.AwardMapper">
+
+    <resultMap id="BaseResultMap" type="com.yuan.luckinfrastrusture.gateway.impl.dataobject.AwardDB">
+            <id property="id" column="id" jdbcType="BIGINT"/>
+            <result property="prizeId" column="prize_id" jdbcType="BIGINT"/>
+            <result property="activityId" column="activity_id" jdbcType="BIGINT"/>
+            <result property="number" column="number" jdbcType="INTEGER"/>
+            <result property="awardName" column="award_name" jdbcType="VARCHAR"/>
+            <result property="probability" column="probability" jdbcType="DOUBLE"/>
+            <result property="createTime" column="create_time" jdbcType="TIMESTAMP"/>
+            <result property="creator" column="creator" jdbcType="VARCHAR"/>
+            <result property="updateTime" column="update_time" jdbcType="TIMESTAMP"/>
+            <result property="updater" column="updater" jdbcType="VARCHAR"/>
+    </resultMap>
+
+    <sql id="Base_Column_List">
+        id,prize_id,activity_id,number,
+        award_name,probability,create_time,
+        creator,upodate_time,updater
+    </sql>
+    <select id="page" resultType="com.yuan.luckinfrastrusture.gateway.impl.dataobject.AwardDB">
+        select * from bld_award a
+        left join bld_activity b on a.activity_id = b.id
+        <where>
+            <if test="query.id!=null">
+                a.id =#{query.id}
+            </if>
+            <if test="query.activityId!=null">
+                a.activity_id =#{query.activityId}
+            </if>
+            <if test="query.activityName!=null and query.activityName!=''">
+                and b.activity_name like concat('%',#{query.activityName},'%')
+            </if>
+            <if test="query.awardName!=null and query.awardName!=''">
+                and b.award_name like concat('%',#{awardName},'%')
+            </if>
+            
+        </where>
+
+    </select>
+</mapper>
