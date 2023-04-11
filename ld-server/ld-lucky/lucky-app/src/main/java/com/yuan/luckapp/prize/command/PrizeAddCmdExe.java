@@ -23,6 +23,6 @@ public class PrizeAddCmdExe {
    
    public PrizeVO excute(PrizeAddCmd cmd) {
       PrizeEntity prizeEntity = prizeGateway.save(PrizeAssembler.toAddEntity(cmd));
-      return PrizeAssembler.toPrizeVo(prizeEntity);
+      return PrizeAssembler.toPrizeVO(prizeEntity);
    }
 }
