@@ -11,7 +11,7 @@ import java.time.LocalDateTime;
  * 
  * @TableName ldb_prize
  */
-@TableName(value ="ldb_prize")
+@TableName(value ="bld_prize")
 @Data
 public class PrizeDB implements Serializable {
     /**

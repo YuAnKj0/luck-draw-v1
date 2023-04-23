@@ -10,7 +10,7 @@ import java.time.LocalDateTime;
  * 
  * @TableName ldb_award
  */
-@TableName(value ="ldb_award")
+@TableName(value ="bld_award")
 @Data
 public class AwardDB implements Serializable {
     /**

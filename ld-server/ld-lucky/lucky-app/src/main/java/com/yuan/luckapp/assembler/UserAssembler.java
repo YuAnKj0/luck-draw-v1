@@ -43,7 +43,6 @@ public class UserAssembler {
         entity.setPassword(new PassWord(new PassWord.EncryptionPassWord(PassWord.getEncryptionPassWord(cmd.getPassword()))));
         entity.setName(cmd.getName());
         entity.setPhone(cmd.getPhone());
-        //entity.setCreateTime(LocalDateTime.now());
         entity.setUpdateTime(LocalDateTime.now());
         return entity;
     }

@@ -53,8 +53,6 @@ public class AwardAssembler {
         awardEntity.setNumber(new AwardNumber(cmd.getNumber()));
         awardEntity.setAwardName(cmd.getAwardName());
         awardEntity.setProbability(cmd.getProbability());
-        awardEntity.setCreateTime(LocalDateTime.now());
-        awardEntity.setCreator(SecurityUtil.getUserName());
         awardEntity.setUpdateTime(LocalDateTime.now());
         awardEntity.setUpdater(SecurityUtil.getUserName());
         return awardEntity;

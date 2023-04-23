@@ -11,7 +11,7 @@ import java.time.LocalDateTime;
  * @date 2023/3/20/15:35
  * @apiNote
  */
-@TableName(value ="ldb_user")
+@TableName(value ="bld_user")
 @Data
 public class UserDB implements Serializable {
    /**

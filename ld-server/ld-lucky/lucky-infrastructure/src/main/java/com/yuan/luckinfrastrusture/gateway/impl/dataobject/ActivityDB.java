@@ -8,11 +8,11 @@ import java.time.LocalDateTime;
 
 /**
  * 
- * @TableName ldb_rule
+ * @TableName ldb_activity
  */
-@TableName(value ="bld_rule")
+@TableName(value ="bld_activity")
 @Data
-public class RuleDB implements Serializable {
+public class ActivityDB implements Serializable {
     /**
      * 
      */
@@ -22,33 +22,35 @@ public class RuleDB implements Serializable {
     /**
      * 
      */
-    private String ruleName;
+    private String activityName;
+        
+    
+    /**
+     * 
+     */
+    private LocalDateTime startTime;
 
     /**
      * 
      */
-    private Integer maxJoinNumber;
+    private LocalDateTime endTime;
 
     /**
      * 
      */
-    private Integer maxWiningNumber;
-
-    /**
-     * 
-     */
-    @TableField(fill = FieldFill.INSERT)
+    private String describe;
+    
+    
+    @TableField(fill = FieldFill.INSERT)    
     private LocalDateTime createTime;
 
     /**
      * 
      */
     private String creator;
-
-    /**
-     * 
-     */
-    @TableField(fill = FieldFill.INSERT_UPDATE)
+    
+    
+    @TableField(fill = FieldFill.INSERT_UPDATE)  
     private LocalDateTime updateTime;
 
     /**

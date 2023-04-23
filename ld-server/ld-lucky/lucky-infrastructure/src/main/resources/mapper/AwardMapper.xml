@@ -20,7 +20,7 @@
     <sql id="Base_Column_List">
         id,prize_id,activity_id,number,
         award_name,probability,create_time,
-        creator,upodate_time,updater
+        creator,update_time,updater
     </sql>
     <select id="page" resultType="com.yuan.luckinfrastrusture.gateway.impl.dataobject.AwardDB">
         select * from bld_award a
