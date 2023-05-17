@@ -1,7 +1,7 @@
 package com.yuan.luckapp.activityrule.command;
 
 import cn.hutool.core.collection.CollectionUtil;
-
+import com.yuan.base.config.exception.LDException;
 import com.yuan.luckapp.assembler.ActivityRuleAssembler;
 import com.yuan.luckclient.service.dto.ActivityRuleAddCmd;
 import com.yuan.luckclient.service.dto.data.ActivityRuleVO;
@@ -35,7 +35,7 @@ public class ActivityRuleAddCmdExe {
 
     public List<ActivityRuleVO> execute(List<ActivityRuleAddCmd> cmdList) {
         if (CollectionUtil.isEmpty(cmdList)) {
-            throw new LdException("数据有误！");
+            throw new LDException("数据有误！");
         }
 
         List<ActivityRuleVO> result = new ArrayList<>();
@@ -46,16 +46,5 @@ public class ActivityRuleAddCmdExe {
         return result;
     }
     
-    public List<ActivityRuleVO> excute(List<ActivityRuleAddCmd> cmdList) {
-        if (CollectionUtil.isEmpty(cmdList)) {
-            throw new LdException("数据有误！");
-        }
-        List<ActivityRuleVO> result = new ArrayList<>();
-        for (ActivityRuleAddCmd addCmd : cmdList) {
-            result.add(execute(addCmd));
-        }
-        
-        return result;
-    }
 }
 
