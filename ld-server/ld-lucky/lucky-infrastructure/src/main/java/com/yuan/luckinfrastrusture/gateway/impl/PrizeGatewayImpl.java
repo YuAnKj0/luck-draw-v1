@@ -2,7 +2,9 @@ package com.yuan.luckinfrastrusture.gateway.impl;
 
 import com.baomidou.mybatisplus.core.metadata.IPage;
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
+import com.yuan.base.config.enums.LDExceptionEnum;
 import com.yuan.base.config.exception.LDException;
+import com.yuan.base.config.utils.AssertUtil;
 import com.yuan.luckclient.service.dto.query.PrizeListByParamQuery;
 import com.yuan.luckdomain.gateway.PrizeGateway;
 import com.yuan.luckdomain.prize.PrizeEntity;
@@ -39,19 +41,13 @@ public class PrizeGatewayImpl implements PrizeGateway {
    
    private PrizeEntity updateEntity(PrizeEntity entity) {
       PrizeDB prizeDB= PrizeConvertor.toPrizeDB(entity);
-      int update = prizeMapper.updateById(prizeDB);
-      if (update <=0){
-         throw new LDException("修改失败");
-      }
+      AssertUtil.isTrue(prizeMapper.updateById(prizeDB)<=0,LDExceptionEnum.UPDATE_ERROR.getDescription());
       return PrizeConvertor.toPrizeEntity(prizeDB);
    }
    
    private PrizeEntity addPrize(PrizeEntity entity) {
       PrizeDB prizeDB= PrizeConvertor.toPrizeDB(entity);
-      int insert = prizeMapper.insert(prizeDB);
-      if (insert <=0){
-         throw new LDException("添加失败");
-      }
+      AssertUtil.isTrue( prizeMapper.insert(prizeDB)<=0, LDExceptionEnum.ADD_ERROR.getDescription());
       return PrizeConvertor.toPrizeEntity(prizeDB);
    }
    

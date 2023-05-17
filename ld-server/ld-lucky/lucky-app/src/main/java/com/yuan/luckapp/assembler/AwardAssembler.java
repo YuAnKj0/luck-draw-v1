@@ -57,4 +57,30 @@ public class AwardAssembler {
         awardEntity.setUpdater(SecurityUtil.getUserName());
         return awardEntity;
     }
+    
+    public static AwardAddCmd toAwardAddCmd(AwardVO awardVO) {
+        AwardAddCmd awardAddCmd = new AwardAddCmd();
+        awardAddCmd.setPrizeId(awardVO.getPrizeId());
+        awardAddCmd.setNumber(awardVO.getNumber());
+        awardAddCmd.setAwardName(awardVO.getAwardName());
+        awardAddCmd.setProbability(awardVO.getProbability());
+        
+        return awardAddCmd;
+    }
+    
+    public static AwardEntity toAwardEntity(AwardVO awardVO) {
+        AwardEntity awardEntity = new AwardEntity();
+        awardEntity.setId(awardVO.getId());
+        awardEntity.setPrizeId(awardVO.getPrizeId());
+        awardEntity.setActivityId(awardVO.getActivityId());
+        awardEntity.setNumber(new AwardNumber(awardVO.getNumber()));
+        awardEntity.setAwardName(awardVO.getAwardName());
+        awardEntity.setProbability(awardVO.getProbability());
+        awardEntity.setCreateTime(awardVO.getCreateTime());
+        awardEntity.setCreator(awardVO.getCreator());
+        awardEntity.setUpdateTime(awardVO.getUpdateTime());
+        awardEntity.setUpdater(awardVO.getUpdater());
+        
+        return awardEntity;
+    }
 }

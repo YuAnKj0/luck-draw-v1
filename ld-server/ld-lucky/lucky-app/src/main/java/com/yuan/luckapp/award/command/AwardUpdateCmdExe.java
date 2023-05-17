@@ -23,4 +23,5 @@ public class AwardUpdateCmdExe {
         AwardEntity entity = gateway.save(AwardAssembler.toUpdateEntity(cmd));
         return AwardAssembler.toAwardVO(entity);
     }
+    
 }

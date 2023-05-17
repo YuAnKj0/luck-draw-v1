@@ -2,7 +2,9 @@ package com.yuan.luckinfrastrusture.gateway.impl;
 
 import com.baomidou.mybatisplus.core.metadata.IPage;
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
+import com.yuan.base.config.enums.LDExceptionEnum;
 import com.yuan.base.config.exception.LDException;
+import com.yuan.base.config.utils.AssertUtil;
 import com.yuan.luckclient.service.dto.query.ActivityListByParamQuery;
 import com.yuan.luckdomain.activity.ActivityEntity;
 import com.yuan.luckdomain.gateway.ActivityGateway;
@@ -37,20 +39,14 @@ public class ActivityGatewayImpl implements ActivityGateway {
    
    private ActivityEntity updateActivity(ActivityEntity entity) {
       ActivityDB activityDB= ActivityConvertor.toActivityDB(entity);
-      int update = activityMapper.updateById(activityDB);
-      if (update<=0){
-         throw new LDException("修改数据失败");
-      }
+      AssertUtil.isTrue(activityMapper.updateById(activityDB)<=0, LDExceptionEnum.UPDATE_ERROR.getDescription());
       return ActivityConvertor.toEntity(activityDB);
       
    }
    
    private ActivityEntity addActivity(ActivityEntity entity) {
       ActivityDB activityDB= ActivityConvertor.toActivityDB(entity);
-      int insert = activityMapper.insert(activityDB);
-      if (insert<=0){
-         throw new LDException("添加数据失败");
-      }
+      AssertUtil.isTrue(activityMapper.insert(activityDB)<=0,LDExceptionEnum.ADD_ERROR.getDescription());
       return ActivityConvertor.toEntity(activityDB);
       
    }

@@ -1,6 +1,7 @@
 package com.yuan.base.common.handler;
 
 import com.mysql.cj.jdbc.exceptions.MysqlDataTruncation;
+import com.yuan.base.config.exception.LDCodeException;
 import com.yuan.base.config.exception.LDException;
 import com.yuan.base.config.exception.TokenAuthException;
 import com.yuan.base.config.vo.FailInfo;
@@ -51,6 +52,15 @@ public class SysExceptionHandler {
       log.error("Exception information:{}", e.getMessage());
       log.error("Exception info:",e);
       var failInfo= FailInfo.builder().exception(e.getMessage()).build();
+      return failInfo;
+   }
+   
+   @ExceptionHandler(value = LDCodeException.class)
+   public FailInfo sysException(LDCodeException e){
+      log.error("Exception information:{}", e.getMessage());
+      log.error("Exception info:",e);
+      //var failInfo= FailInfo.builder().exception(e.getMessage()).build();
+      FailInfo failInfo=new FailInfo(e.getCode(),e.getMessage());
       return failInfo;
    }
    

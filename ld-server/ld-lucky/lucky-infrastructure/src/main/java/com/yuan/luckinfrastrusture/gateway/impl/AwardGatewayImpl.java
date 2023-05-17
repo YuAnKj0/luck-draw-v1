@@ -2,7 +2,9 @@ package com.yuan.luckinfrastrusture.gateway.impl;
 
 import com.baomidou.mybatisplus.core.metadata.IPage;
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
+import com.yuan.base.config.enums.LDExceptionEnum;
 import com.yuan.base.config.exception.LDException;
+import com.yuan.base.config.utils.AssertUtil;
 import com.yuan.luckclient.service.dto.query.AwardListByParamQuery;
 import com.yuan.luckdomain.award.AwardEntity;
 import com.yuan.luckdomain.gateway.AwardGateway;
@@ -37,19 +39,13 @@ public class AwardGatewayImpl implements AwardGateway {
    
    private AwardEntity updateAward(AwardEntity entity) {
       AwardDB awardDB = AwardConvertor.toAwardDB(entity);
-      int update = awardMapper.updateById(awardDB);
-      if (update < 0){
-         throw new LDException("修改失败");
-      }
+      AssertUtil.isTrue(awardMapper.updateById(awardDB)<=0,LDExceptionEnum.UPDATE_ERROR.getDescription());
       return AwardConvertor.toAwardEntity(awardDB);
    }
    
    private AwardEntity addAward(AwardEntity entity) {
       AwardDB awardDB = AwardConvertor.toAwardDB(entity);
-      int insert = awardMapper.insert(awardDB);
-      if (insert < 0){
-         throw new LDException("添加失败");
-      }
+      AssertUtil.isTrue(awardMapper.insert(awardDB)<=0, LDExceptionEnum.ADD_ERROR.getDescription());
       return AwardConvertor.toAwardEntity(awardDB);
    }
    

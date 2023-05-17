@@ -3,6 +3,8 @@ package com.yuan.luckinfrastrusture.gateway.impl;
 import com.alibaba.cola.exception.SysException;
 import com.baomidou.mybatisplus.core.metadata.IPage;
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
+import com.yuan.base.config.enums.LDExceptionEnum;
+import com.yuan.base.config.utils.AssertUtil;
 import com.yuan.luckclient.service.dto.query.UserListByParamQuery;
 import com.yuan.luckdomain.gateway.UserGateway;
 import com.yuan.luckdomain.user.UserEntity;
@@ -36,13 +38,6 @@ public class UserGatewayImpl implements UserGateway {
    
    @Override
    public UserEntity save(UserEntity userEntity) {
-      /*UserDB userDB= UserConvertor.toUserDB(userEntity);
-      int insert = userMapper.insert(userDB);
-      if (insert<=0) {
-         throw new SysException("注册失败");
-      }
-   
-      return UserConvertor.toEntity(userDB);*/
       if (Objects.isNull(userEntity.getId())) {
          return addUser(userEntity);
       }
@@ -58,20 +53,12 @@ public class UserGatewayImpl implements UserGateway {
    
    public UserEntity addUser(UserEntity userEntity) {
       UserDB userDB= UserConvertor.toUserDB(userEntity);
-      int insert = userMapper.insert(userDB);
-      if (insert<=0) {
-         throw new SysException("注册失败");
-      }
-   
+      AssertUtil.isTrue(userMapper.insert(userDB)<=0, LDExceptionEnum.ADD_USER_ERROR.getDescription());
       return UserConvertor.toEntity(userDB);
    }
    public UserEntity updateUser(UserEntity userEntity) {
       UserDB userDB= UserConvertor.toUserDB(userEntity);
-      int insert = userMapper.updateById(userDB);
-      if (insert<=0) {
-         throw new SysException("注册失败");
-      }
-      
+      AssertUtil.isTrue(userMapper.updateById(userDB)<=0,LDExceptionEnum.UPDATE_USER_ERROR.getDescription());
       return UserConvertor.toEntity(userDB);
    }
    

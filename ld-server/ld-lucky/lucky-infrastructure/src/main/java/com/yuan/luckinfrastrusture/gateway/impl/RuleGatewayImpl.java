@@ -2,7 +2,9 @@ package com.yuan.luckinfrastrusture.gateway.impl;
 
 import com.baomidou.mybatisplus.core.metadata.IPage;
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
+import com.yuan.base.config.enums.LDExceptionEnum;
 import com.yuan.base.config.exception.LDException;
+import com.yuan.base.config.utils.AssertUtil;
 import com.yuan.luckclient.service.dto.query.RuleListByParamQuery;
 import com.yuan.luckdomain.gateway.RuleGateway;
 import com.yuan.luckdomain.rule.RuleEntity;
@@ -29,21 +31,13 @@ public class RuleGatewayImpl implements RuleGateway {
    
    private RuleEntity updateRule(RuleEntity entity) {
       RuleDB ruleDB = RuleConvertor.toRuleDB(entity);
-      
-      int update =  ruleMapper.updateById(ruleDB);
-      if(update<=0){
-         throw new LDException("修改失败");
-      }
+      AssertUtil.isTrue(ruleMapper.updateById(ruleDB)<=0, LDExceptionEnum.UPDATE_ERROR.getDescription());
       return RuleConvertor.toRuleEntity(ruleDB);
    }
    
    private RuleEntity addRule(RuleEntity entity) {
       RuleDB ruleDB = RuleConvertor.toRuleDB(entity);
-      
-      int insert =  ruleMapper.updateById(ruleDB);
-      if(insert<=0){
-         throw new LDException("添加失败");
-      }
+      AssertUtil.isTrue(ruleMapper.updateById(ruleDB)<=0,LDExceptionEnum.ADD_ERROR.getDescription());
       return RuleConvertor.toRuleEntity(ruleDB);
   
    }

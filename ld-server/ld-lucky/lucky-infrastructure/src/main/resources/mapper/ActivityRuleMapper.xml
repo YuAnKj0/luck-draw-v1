@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.yuan.luckinfrastrusture.gateway.impl.mapper.ActivityRuleMapper">
+  <resultMap id="BaseResultMap" type="com.yuan.luckinfrastrusture.gateway.impl.dataobject.ActivityRuleDB">
+    <!--@mbg.generated-->
+    <!--@Table ld_activity_rule-->
+    <id column="id" jdbcType="BIGINT" property="id" />
+    <result column="activity_id" jdbcType="BIGINT" property="activityId" />
+    <result column="rule_id" jdbcType="BIGINT" property="ruleId" />
+    <result column="create_time" jdbcType="TIMESTAMP" property="createTime" />
+    <result column="creator" jdbcType="VARCHAR" property="creator" />
+    <result column="update_time" jdbcType="TIMESTAMP" property="updateTime" />
+    <result column="updater" jdbcType="VARCHAR" property="updater" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    <!--@mbg.generated-->
+    id, activity_id, rule_id, create_time, creator, update_time, updater
+  </sql>
+</mapper>
