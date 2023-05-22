@@ -59,13 +59,24 @@ public class ActivityConfigServiceImpl implements IActivityConfigService {
    
    @Override
    public ActivityConfigVO add(ActivityConfigAddCmd cmd) {
-      ActivityVO activityVO = activityAddCmdExe.excute(cmd.getActivityAddCmd());
+      /*ActivityVO activityVO = activityAddCmdExe.excute(cmd.getActivityAddCmd());
       List<RuleVO> ruleVOList = addActivityRule(activityVO, cmd.getRuleIdList());
       List<AwardVO> awardVOList = addAward(activityVO, cmd.getAwardAddCmdList());
       ActivityConfigVO activityConfigVO = new ActivityConfigVO();
       activityConfigVO.setActivityVO(activityVO);
       activityConfigVO.setRuleVOList(ruleVOList);
       activityConfigVO.setAwardVOList(awardVOList);
+      
+      //发起活动创建事件
+      applicationEventMulticaster.multicastEvent(new ActivityCreateEvent("", activityConfigVO));
+      // 发布一个 MQ 信息
+      
+      return activityConfigVO;*/
+      
+      ActivityVO activityVO = activityAddCmdExe.excute(cmd.getActivityAddCmd());
+      List<RuleVO> ruleVOList = addActivityRule(activityVO, cmd.getRuleIdList());
+      List<AwardVO> awardVOList = addAward(activityVO, cmd.getAwardAddCmdList());
+      ActivityConfigVO activityConfigVO = new ActivityConfigVO(activityVO, ruleVOList, awardVOList);
       
       //发起活动创建事件
       applicationEventMulticaster.multicastEvent(new ActivityCreateEvent("", activityConfigVO));
@@ -82,17 +93,27 @@ public class ActivityConfigServiceImpl implements IActivityConfigService {
          result.add(awardAddCmdExe.excute(awardAddCmd));
       }
       return result;
+      
    }
    
    private List<RuleVO> addActivityRule(ActivityVO activityVO, List<Long> ruleIdList) {
-      List<ActivityRuleAddCmd> cmdList = new ArrayList<>();
+      /*List<ActivityRuleAddCmd> cmdList = new ArrayList<>();
       for (Long ruleId : ruleIdList) {
          ActivityRuleAddCmd activityRuleAddCmd = new ActivityRuleAddCmd();
          activityRuleAddCmd.setActivityId(activityVO.getId());
          activityRuleAddCmd.setRuleId(ruleId);
          cmdList.add(activityRuleAddCmd);
-      }
-      List<ActivityRuleVO> activityRuleVOList = activityRuleAddCmdExe.excute(cmdList);
+      }*/
+      
+      List<ActivityRuleAddCmd> cmdList = ruleIdList.stream()
+              .map(ruleId -> {
+                 ActivityRuleAddCmd activityRuleAddCmd = new ActivityRuleAddCmd();
+                 activityRuleAddCmd.setActivityId(activityVO.getId());
+                 activityRuleAddCmd.setRuleId(ruleId);
+                 return activityRuleAddCmd;
+              })
+              .collect(Collectors.toList());
+      List<ActivityRuleVO> activityRuleVOList = activityRuleAddCmdExe.execute(cmdList);
       return getRuleVOList(activityRuleVOList.stream().map(ActivityRuleVO::getRuleId).collect(Collectors.toList()));
    }
    
@@ -112,21 +133,26 @@ public class ActivityConfigServiceImpl implements IActivityConfigService {
       List<RuleVO> ruleVOList = addActivityRule(activityVO, configUpdateCmd.getRuleIdList());
       List<AwardVO> awardVOList = updateAward(activityVO, configUpdateCmd.getAwardUpdateCmdList());
       
-      ActivityConfigVO activityConfigVO = new ActivityConfigVO();
+      /*ActivityConfigVO activityConfigVO = new ActivityConfigVO();
       activityConfigVO.setActivityVO(activityVO);
       activityConfigVO.setRuleVOList(ruleVOList);
-      activityConfigVO.setAwardVOList(awardVOList);
+      activityConfigVO.setAwardVOList(awardVOList);*/
       
-      return activityConfigVO;
+      return new ActivityConfigVO(activityVO, ruleVOList, awardVOList);
    }
+      
+   
    
    private List<AwardVO> updateAward(ActivityVO activityVO, List<AwardUpdateCmd> awardUpdateCmdList) {
       AssertUtil.isTrue(CollectionUtil.isEmpty(awardUpdateCmdList), "奖项不为空！");
-      List<AwardVO> result = new ArrayList<>();
+      /*List<AwardVO> result = new ArrayList<>();
       for (AwardUpdateCmd awardUpdateCmd : awardUpdateCmdList) {
          result.add(awardUpdateCmdExe.excute(awardUpdateCmd));
-      }
-      return result;
+      }*/
+      return awardUpdateCmdList.stream()
+              .map(awardUpdateCmd -> awardUpdateCmdExe.excute(awardUpdateCmd))
+              .collect(Collectors.toList());
+      
    }
    
    @Override
@@ -148,12 +174,14 @@ public class ActivityConfigServiceImpl implements IActivityConfigService {
       awardListByParamQuery.setPageSize(1000);
       List<AwardVO> awardVOList = awardListByParamQueryExe.execute(awardListByParamQuery).getRecords();
       
-      ActivityConfigVO activityConfigVO = new ActivityConfigVO();
+      /*ActivityConfigVO activityConfigVO = new ActivityConfigVO();
       activityConfigVO.setActivityVO(activityVO);
       activityConfigVO.setAwardVOList(awardVOList);
-      activityConfigVO.setRuleVOList(ruleVOList);
+      activityConfigVO.setRuleVOList(ruleVOList);*/
       
-      return activityConfigVO;
+      
+      return new ActivityConfigVO(activityVO, ruleVOList, awardVOList);
+      
       
    }
    
@@ -169,8 +197,6 @@ public class ActivityConfigServiceImpl implements IActivityConfigService {
       );
       
       return activityConfigCopyVO;
-      
-      
       
    }
 }

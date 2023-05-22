@@ -3,7 +3,6 @@ package com.yuan.luckinfrastrusture.gateway.impl;
 import com.baomidou.mybatisplus.core.metadata.IPage;
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.yuan.base.config.enums.LDExceptionEnum;
-import com.yuan.base.config.exception.LDException;
 import com.yuan.base.config.utils.AssertUtil;
 import com.yuan.luckclient.service.dto.query.PrizeListByParamQuery;
 import com.yuan.luckdomain.gateway.PrizeGateway;
@@ -55,5 +54,11 @@ public class PrizeGatewayImpl implements PrizeGateway {
    public IPage<PrizeEntity> page(PrizeListByParamQuery query) {
       IPage<PrizeDB> page = prizeMapper.page(new Page<PrizeDB>(query.getPageIndex(), query.getPageSize()), query);
       return page.convert(PrizeConvertor::toPrizeEntity);
+   }
+   
+   @Override
+   public int deductionInventory(Long prizeId, Integer number) {
+      return prizeMapper.deductionInventory(prizeId,number);
+      
    }
 }

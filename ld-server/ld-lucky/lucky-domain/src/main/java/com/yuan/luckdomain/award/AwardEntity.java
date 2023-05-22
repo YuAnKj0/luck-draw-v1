@@ -58,4 +58,9 @@ public class AwardEntity {
     *
     */
    private String updater;
+   
+   public Boolean isPrize(){
+      return !"0".equals(this.prizeId.toString());
+      //return this.prizeId!=0L;
+   }
 }

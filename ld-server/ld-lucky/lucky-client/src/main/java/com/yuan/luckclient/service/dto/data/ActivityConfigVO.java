@@ -1,5 +1,6 @@
 package com.yuan.luckclient.service.dto.data;
 
+import lombok.AllArgsConstructor;
 import lombok.Data;
 
 import java.util.List;
@@ -12,6 +13,7 @@ import java.util.List;
 
 
 @Data
+@AllArgsConstructor
 public class ActivityConfigVO {
     
     private ActivityVO activityVO;
