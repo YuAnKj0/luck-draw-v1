@@ -42,7 +42,7 @@ public class RecordEntity implements Serializable {
     /**
      * 状态：0,1,2,3
      */
-    private Integer state;
+    private RecordStatus state;
 
 
     private LocalDateTime createTime;

@@ -1,7 +1,12 @@
 package com.yuan.luckinfrastrusture.gateway.impl.mapper;
 
 import com.baomidou.mybatisplus.core.mapper.BaseMapper;
+import com.baomidou.mybatisplus.core.metadata.IPage;
+import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
+import com.yuan.luckclient.service.dto.query.RecordListByParamQuery;
+import com.yuan.luckinfrastrusture.gateway.impl.dataobject.PrizeDB;
 import com.yuan.luckinfrastrusture.gateway.impl.dataobject.RecordDB;
+import org.apache.ibatis.annotations.Param;
 
 /**
 * @author Ykj
@@ -10,7 +15,8 @@ import com.yuan.luckinfrastrusture.gateway.impl.dataobject.RecordDB;
 * @Entity com.yuan.user.po.Record
 */
 public interface RecordMapper extends BaseMapper<RecordDB> {
-
+    
+    IPage<PrizeDB> page(@Param("page") Page<RecordDB> recordDBPage, @Param("query") RecordListByParamQuery query);
 }
 
 

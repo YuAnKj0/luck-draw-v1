@@ -1,6 +1,7 @@
-package com.yuan.luckapp.listener;
+package com.yuan.luckapp.listener.event;
 
 import com.yuan.luckclient.service.dto.data.ActivityConfigVO;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.context.ApplicationEvent;
 
 /**
@@ -9,7 +10,7 @@ import org.springframework.context.ApplicationEvent;
  * @apiNote
  */
 
-
+@Slf4j
 public class ActivityCreateEvent extends ApplicationEvent {
    private final ActivityConfigVO activityConfigVO;
    

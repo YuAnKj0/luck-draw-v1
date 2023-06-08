@@ -10,14 +10,15 @@ import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Component;
 
 
-@Slf4j
-@Component
-@AllArgsConstructor
+
 /**
  * @author Ykj
  * @date 2023/4/21/17:20
  * @apiNote
  */
+@Slf4j
+@Component
+@AllArgsConstructor
 public class ActivityAddCmdExe {
    private final ActivityGateway activityGateway;
    public ActivityVO excute(ActivityAddCmd cmd) {

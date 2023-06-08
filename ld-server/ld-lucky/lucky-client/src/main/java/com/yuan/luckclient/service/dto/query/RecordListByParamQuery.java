@@ -2,6 +2,7 @@ package com.yuan.luckclient.service.dto.query;
 
 import com.alibaba.cola.dto.PageQuery;
 import lombok.Data;
+import lombok.experimental.Accessors;
 
 import java.time.LocalDate;
 
@@ -13,6 +14,7 @@ import java.time.LocalDate;
 
 
 @Data
+@Accessors(chain = true)
 public class RecordListByParamQuery extends PageQuery {
    
    private Long activityId;

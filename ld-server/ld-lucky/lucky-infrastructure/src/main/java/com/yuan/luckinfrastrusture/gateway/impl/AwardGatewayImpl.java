@@ -54,4 +54,24 @@ public class AwardGatewayImpl implements AwardGateway {
       IPage<AwardDB> page=awardMapper.page(new Page<AwardDB>(query.getPageIndex(),query.getPageSize()),query);
       return page.convert(AwardConvertor::toAwardEntity);
    }
+   
+   @Override
+   public AwardEntity one(Long id) {
+      AwardListByParamQuery query = new AwardListByParamQuery();
+      query.setId(id);
+      AwardEntity entity=null;
+      try {
+         entity = page(query).getRecords().get(0);
+         
+      }catch (Exception e){
+         throw new LDException(String.format("奖项id：%s，不存在！", id));
+      }
+      return entity;
+   }
+   
+   @Override
+   public int deductionAwardNumber(Long awardId, int number) {
+      return awardMapper.deductionAwardNumber(awardId,number);
+   }
+   
 }

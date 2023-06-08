@@ -4,6 +4,7 @@ import com.baomidou.mybatisplus.core.metadata.IPage;
 import com.yuan.luckclient.service.dto.ActivityAddCmd;
 import com.yuan.luckclient.service.dto.ActivityUpdateCmd;
 import com.yuan.luckclient.service.dto.data.ActivityVO;
+import com.yuan.luckclient.service.dto.data.DrawResultVO;
 import com.yuan.luckclient.service.dto.query.ActivityListByParamQuery;
 
 /**
@@ -20,6 +21,13 @@ public interface IActivityService {
     IPage<ActivityVO> page(ActivityListByParamQuery query );
     
     ActivityVO one(Long id);
+
+    /**
+     * 用户抽奖接口
+     * @param activityId
+     * @return
+     */
+    DrawResultVO draw(Long activityId);
    
    
 }

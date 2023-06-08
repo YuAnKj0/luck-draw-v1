@@ -15,7 +15,7 @@ import com.yuan.luckapp.assembler.AwardAssembler;
 import com.yuan.luckapp.award.command.AwardAddCmdExe;
 import com.yuan.luckapp.award.command.AwardUpdateCmdExe;
 import com.yuan.luckapp.award.query.AwardListByParamQueryExe;
-import com.yuan.luckapp.listener.ActivityCreateEvent;
+import com.yuan.luckapp.listener.event.ActivityCreateEvent;
 import com.yuan.luckapp.rule.query.RuleListByParamQueryExe;
 import com.yuan.luckclient.service.api.IActivityConfigService;
 import com.yuan.luckclient.service.dto.*;

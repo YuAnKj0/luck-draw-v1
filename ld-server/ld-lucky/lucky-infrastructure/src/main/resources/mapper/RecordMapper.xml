@@ -23,4 +23,7 @@
         create_time,creator,update_time,
         updater
     </sql>
+    
+    <select id="page" resultType="com.yuan.luckinfrastrusture.gateway.impl.dataobject.PrizeDB">
+    </select>
 </mapper>
