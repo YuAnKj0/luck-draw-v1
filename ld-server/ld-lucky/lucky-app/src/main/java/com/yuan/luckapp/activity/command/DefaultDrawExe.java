@@ -3,13 +3,17 @@ package com.yuan.luckapp.activity.command;
 import cn.hutool.core.collection.CollUtil;
 import cn.hutool.core.collection.CollectionUtil;
 import cn.hutool.core.lang.WeightRandom;
+
 import cn.hutool.core.util.RandomUtil;
 import com.baomidou.mybatisplus.core.metadata.IPage;
+import com.yuan.base.config.enums.RecordStatusEnum;
 import com.yuan.base.config.exception.LDException;
 import com.yuan.base.config.utils.AssertUtil;
 import com.yuan.base.config.utils.SecurityUtil;
 import com.yuan.luckapp.ActivityDrawContext;
 import com.yuan.luckapp.assembler.AwardAssembler;
+import com.yuan.luckapp.assembler.RecordAssembler;
+import com.yuan.luckclient.service.dto.RecordAddCmd;
 import com.yuan.luckclient.service.dto.data.*;
 import com.yuan.luckclient.service.dto.query.RecordListByParamQuery;
 import com.yuan.luckdomain.activity.ActivityEntity;
@@ -21,13 +25,16 @@ import com.yuan.luckdomain.gateway.PrizeGateway;
 import com.yuan.luckdomain.gateway.RecordGateway;
 import com.yuan.luckdomain.record.RecordEntity;
 import lombok.AllArgsConstructor;
+import lombok.Getter;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Component;
 import org.springframework.transaction.support.TransactionTemplate;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Objects;
 import java.util.stream.Collectors;
+
 
 /**
  * @author Ykj
@@ -35,6 +42,7 @@ import java.util.stream.Collectors;
  * @apiNote
  */
 @Slf4j
+@Getter
 @Component
 @AllArgsConstructor
 public class DefaultDrawExe extends BaseDrawExe {
@@ -86,8 +94,44 @@ public class DefaultDrawExe extends BaseDrawExe {
     
     @Override
     protected Boolean drawBefore(ActivityDrawContext context) {
+        return transactionTemplate.execute(status -> {
+            Boolean success = Boolean.TRUE;
+            int update = 0;
+            try {
+                //扣减库存
+                update = awardGateway.deductionAwardNumber(context.getAwardVO().getId(), 1);
+                AssertUtil.isTrue(update != 1, "扣减库存失败");
+                addRecord(context);
+            } catch (Exception e) {
+                //错误处理
+                status.setRollbackOnly();
+                if (update > 0) {
+                    //回退库存
+                    awardGateway.deductionAwardNumber(context.getAwardVO().getId(), -1);
+                }
+                log.error("扣减库存和插入记录出错", e);
+                success = Boolean.FALSE;
+            }
+            return success;
+        });
+    }
+    
+    @Override
+    protected void addRecord(ActivityDrawContext context) {
+        //插入记录，默认记录可见
+        if (Objects.isNull(context.getIsShow())) {
+            context.setIsShow(Boolean.TRUE);
+        }
+        RecordAddCmd recordAddCmd = new RecordAddCmd();
+        recordAddCmd.setUserId(SecurityUtil.getUserId());
+        recordAddCmd.setActivityId(context.getActivityConfigVO().getActivityVO().getId());
+        recordAddCmd.setActivityName(context.getActivityConfigVO().getActivityVO().getActivityName());
+        recordAddCmd.setAwardId(context.getAwardVO().getId());
+        recordAddCmd.setIsWinning(Boolean.TRUE.equals(context.getAwardEntity().isPrize()) ? 1 : 0);
+        recordAddCmd.setState(context.getIsShow() ? RecordStatusEnum.STATUE_1.getValue() : RecordStatusEnum.STATUE_0.getValue());
         
-        return null;
+        context.setRecordId(recordGateway.save(RecordAssembler.toAddEntity(recordAddCmd)).getId());
+        
     }
     
     
@@ -123,6 +167,12 @@ public class DefaultDrawExe extends BaseDrawExe {
             return new ArrayList<>();
         }
         return awardVOList.stream().filter(item -> item.getNumber() > 0 || "0".equals(item.getPrizeId().toString())).collect(Collectors.toList());
+    }
+    
+    @Override
+    protected DrawResultVO addRecordAndGetDrawResultVO(ActivityDrawContext context) {
+        return null;
+        
     }
     
     @Override

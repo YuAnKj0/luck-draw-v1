@@ -30,19 +30,17 @@ public abstract class AwardInventoryToRedisApplicationListener implements Applic
     ActivityConfigVO activityConfigVO=event.getActivityConfig();
     for (AwardVO awardVO : activityConfigVO.getAwardVOList()) {
       AwardEntity awardEntity = AwardAssembler.toAwardEntity(awardVO);
-      if (Boolean.FALSE.equals(awardEntity.isPrize())){
+      if (Boolean.FALSE.equals(awardEntity.isPrize())) {
         continue;
       }
       
-      redisTemplate.opsForValue().set(getKey(activityConfigVO.getActivityVO().getId(),awardVO.getId()),awardVO
+      redisTemplate.opsForValue().set(getKey(activityConfigVO.getActivityVO().getId(), awardVO.getId()), awardVO
               .getNumber());
     }
-  
     
-      
   }
   
-  private String getKey(Long activityId, Long awardId) {
-    return awardInventoryKey+activityId+":"+activityId;
+  public static String getKey(Long activityId, Long awardId) {
+    return awardInventoryKey + activityId + ":" + activityId;
   }
 }

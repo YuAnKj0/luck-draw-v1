@@ -3,10 +3,11 @@ ld:
   mysql-port: 3306
   nacos-port: 8848
   redis-port: 6379
+  rocketmq-host:
   rocketmq-port:
-  druid_password: 
-    
-nacos: 
+  druid_password:
+
+nacos:
   #dev
   namespace: bf526873-2af9-498a-9d66-7199b529b45a
 
@@ -15,3 +16,7 @@ DB_HOST: ${ld.host}:${ld.mysql-port}
 DB_NAME: ldb
 DB_USERNAME: root
 DB_PASSWORD: zhangF@3306
+
+
+MQ_NAME_SERVER: ${ld.rocketmq-host}:${ld.rocketmq-port}
+MQ_GROUP: luck_draw
